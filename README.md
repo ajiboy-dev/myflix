@@ -1,214 +1,94 @@
-# MyFlix - Movie Streaming Platform
+# MyFlix
 
-A Netflix-inspired movie and TV show platform built with the MERN stack.
+**A movie and TV discovery app inspired by streaming platforms.** MyFlix brings TMDB-powered browsing, search, detailed titles, trailers, and personal favorites into a responsive React experience backed by a Node.js/Express API.
 
-![MyFlix Screenshot](https://via.placeholder.com/1200x600?text=MyFlix)
+> Portfolio project by [Ajiboye Oluwaseyi](https://github.com/ajiboy-dev).
 
-## ✨ Features
+## Project highlights
 
-- 🎬 Browse thousands of movies and TV shows via TMDB API
-- 📺 TV show details with seasons and episodes
-- 🔍 Advanced search with filters (genre, year, rating)
-- 👤 User authentication (JWT) and profile management
-- ❤️ Favorites system
-- 🎞️ Public domain movies section
-- 🌙 Dark/Light theme toggle
-- 📱 Fully responsive with mobile sidebar
-- 🎥 Trailer player with download option
+- Browse trending, popular, top-rated, now-playing, and upcoming movies and TV shows.
+- Search across titles and discover movies or shows with genre, year, rating, and sort filters.
+- Explore movie and TV details, seasons and episodes, related titles, credits, and trailers.
+- Create an account, manage a profile, and keep a personal favorites list.
+- Switch between dark and light themes with responsive navigation.
+- Explore a dedicated public-domain movies section.
 
-## 🛠️ Tech Stack
+## Screenshots
 
-**Frontend:**
+The repository does not currently include app screenshots. Add genuine captures under `docs/screenshots/` and replace the notes below when available.
 
-- React.js
-- Context API for state management
-- TMDB API
-- Axios
+| Browse | Title details | Search |
+| --- | --- | --- |
+| _Add `docs/screenshots/browse.png`_ | _Add `docs/screenshots/details.png`_ | _Add `docs/screenshots/search.png`_ |
 
-**Backend:**
+## Tech stack
 
-- Node.js
-- Express.js
-- MongoDB with Mongoose
-- JWT authentication
-- bcrypt for password hashing
+- **Client:** React, Vite, Axios, Context API
+- **Server:** Node.js, Express
+- **Database and authentication:** MongoDB, Mongoose, JWT, bcryptjs
+- **Movie data:** The Movie Database (TMDB) API
 
-## 📦 Installation
+## Run locally
 
-### Prerequisites
+Requirements: Node.js, MongoDB, and a TMDB API key.
 
-- Node.js (v14 or higher)
-- MongoDB installed and running
-- TMDB API Key (get from https://www.themoviedb.org/)
-
-### Setup Instructions
-
-1. **Clone the repository**
-
-```bash
-git clone https://github.com/YOUR_USERNAME/myflix.git
-cd myflix
-```
-
-2. **Install server dependencies**
-
-```bash
-cd server
-npm install
-```
-
-3. **Install client dependencies**
-
-```bash
-cd ../client
-npm install
-```
-
-4. **Set up environment variables**
-
-Create `server/.env`:
-
-```
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/myflix
-JWT_SECRET=your_secret_key_here
-JWT_EXPIRES_IN=7d
-```
-
-Create `client/.env`:
-
-```
-REACT_APP_TMDB_API_KEY=your_tmdb_api_key_here
-REACT_APP_TMDB_BASE_URL=https://api.themoviedb.org/3
-REACT_APP_TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p/w500
-```
-
-5. **Start MongoDB**
-
-```bash
-# Windows
-net start MongoDB
-
-# Mac/Linux
-sudo service mongod start
-```
-
-6. **Run the application**
-
-Open two terminal windows:
-
-**Terminal 1 - Backend:**
-
-```bash
-cd server
-npm run dev
-```
-
-**Terminal 2 - Frontend:**
+### 1. Configure the client
 
 ```bash
 cd client
-npm start
+npm install
 ```
 
-7. **Open your browser**
+Create `client/.env` and set your TMDB configuration:
 
-Navigate to: `http://localhost:3000`
-
-## 🚀 Usage
-
-1. Register a new account
-2. Browse movies and TV shows
-3. Search with filters
-4. Add movies to favorites
-5. View detailed information and trailers
-6. Toggle between dark/light themes
-
-## 📂 Project Structure
-
+```env
+VITE_TMDB_API_KEY=your_tmdb_api_key
+VITE_TMDB_BASE_URL=https://api.themoviedb.org/3
+VITE_TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p/w500
 ```
+
+Start the Vite development server:
+
+```bash
+npm run dev
+```
+
+### 2. Configure and start the API
+
+```bash
+cd server
+npm install
+```
+
+Configure the server environment in `server/.env` using the variables expected by the server configuration, including your MongoDB connection string and JWT secret. Then start the API:
+
+```bash
+npm run dev
+```
+
+See the server entry point and configuration for the full required environment variable names. Keep secrets in local environment files and never commit them.
+
+## Project structure
+
+```text
 myflix/
-├── client/                 # React frontend
-│   ├── public/
+├── client/
 │   └── src/
-│       ├── components/     # React components
-│       ├── context/        # Context API providers
-│       ├── pages/          # Page components
-│       ├── services/       # API services
-│       ├── App.js
-│       └── index.js
-│
-├── server/                 # Express backend
-│   ├── config/            # Database configuration
-│   ├── middleware/        # Auth middleware
-│   ├── models/            # Mongoose models
-│   ├── routes/            # API routes
-│   └── index.js
-│
-└── README.md
+│       ├── components/   # Shared UI components
+│       ├── context/      # Authentication and theme state
+│       ├── pages/        # Movie, TV, search, and profile pages
+│       └── services/     # API and TMDB integrations
+└── server/
+    ├── config/           # Database setup
+    ├── middlewares/      # Authentication middleware
+    ├── models/           # Mongoose models
+    └── routes/            # API routes
 ```
 
-## 🔐 Environment Variables
+## Data and attribution
 
-### Server
+Movie and television metadata and images are provided through TMDB. This project is not endorsed or certified by TMDB. Public-domain movie content is provided via Internet Archive.
 
-- `PORT` - Server port (default: 5000)
-- `MONGO_URI` - MongoDB connection string
-- `JWT_SECRET` - Secret key for JWT tokens
-- `JWT_EXPIRES_IN` - Token expiration time
+## Author
 
-### Client
-
-- `REACT_APP_TMDB_API_KEY` - Your TMDB API key
-- `REACT_APP_TMDB_BASE_URL` - TMDB API base URL
-- `REACT_APP_TMDB_IMAGE_BASE_URL` - TMDB image base URL
-
-## 📝 API Endpoints
-
-### Authentication
-
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - Login user
-- `GET /api/auth/profile` - Get user profile (protected)
-- `PUT /api/auth/profile` - Update profile (protected)
-- `PUT /api/auth/change-password` - Change password (protected)
-
-### Favorites
-
-- `POST /api/auth/favorites` - Add to favorites (protected)
-- `DELETE /api/auth/favorites/:movieId` - Remove from favorites (protected)
-
-### Public Domain
-
-- `GET /api/public-domain/movies` - Get public domain movies
-- `GET /api/public-domain/search?query=` - Search public domain
-- `GET /api/public-domain/random` - Get random movies
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 👤 Author
-
-**Your Name**
-
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
-
-## 🙏 Acknowledgments
-
-- [TMDB](https://www.themoviedb.org/) for the movie database API
-- [Internet Archive](https://archive.org/) for public domain movies
-- Netflix for UI/UX inspiration
-
-## 📸 Screenshots
-
-Add your screenshots here after deployment!
-
----
-
-⭐ If you found this project helpful, please give it a star!
+**Ajiboye Oluwaseyi** · [GitHub](https://github.com/ajiboy-dev)
